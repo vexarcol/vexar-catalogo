@@ -103,26 +103,26 @@ function build(){
     const prev=allImgs.slice(0,3).map(s=>`<img src="${s}" loading="lazy" onerror="this.style.opacity=0">`).join('')||'<img style="opacity:0">';
     b.innerHTML=`<div class="ch" onclick="tog(this)"><div class="cp">${prev}</div><div class="ct"><div class="cn">${cat.emoji} ${cat.name}</div><div class="cd">${cat.desc}</div></div><span class="cv">▾</span></div><div class="body"></div>`;
     w.appendChild(b);
+    fill(b.querySelector('.body'),cat);
   });
   document.getElementById('st').innerHTML=`<strong>${D.reduce((a,c)=>a+c.subcats.reduce((b,s)=>b+s.products.length,0),0)}</strong> productos en el catálogo &nbsp;·&nbsp; <span>Haz clic en una categoría para ver</span>`;
 }
 function tog(h){
   const b=h.nextElementSibling,open=b.classList.toggle('open');
   h.classList.toggle('open',open);
-  if(open&&!b.dataset.b){b.dataset.b=1;fill(b,D[[...document.querySelectorAll('.ch')].indexOf(h)]);}
 }
 function fill(body,cat){
   cat.subcats.forEach(sub=>{
     if(!sub.products.length)return;
     const s=document.createElement('div');s.className='ss';
-    s.innerHTML=`<div class="sl">${sub.label} <span style="font-weight:400;opacity:.6">(${sub.products.length})</span><a href="${sub.url}" target="_blank" rel="noopener">Ver en tienda ↗</a></div>`;
+    s.innerHTML=`<div class="sl">${sub.label} <span style="font-weight:400;opacity:.6">(${sub.products.length})</span></div>`;
     const g=document.createElement('div');g.className='pg';
     sub.products.forEach(p=>{
       const c=document.createElement('div');c.className='pc';
       c.dataset.n=p.name.toLowerCase();c.dataset.c=cat.name.toLowerCase();
       c.onclick=()=>ol(p.imgs,0,p.name,cat.name+' · '+sub.label);
       c.innerHTML=`<div class="iw"><img src="${p.imgs[0]}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ni" style="display:none">📷</div></div><div class="pi"><div class="pn">${p.name}</div>${p.imgs.length>1?`<div class="pf">${p.imgs.length} fotos</div>`:''}</div>`;
-      cards.push({el:c,n:p.name.toLowerCase(),c:cat.name.toLowerCase()});
+      cards.push({el:c,n:p.name.toLowerCase(),c:cat.name.toLowerCase(),block:body.parentElement});
       g.appendChild(c);
     });
     s.appendChild(g);body.appendChild(s);
@@ -133,7 +133,29 @@ function ns(d){idx=(idx+d+imgs.length)%imgs.length;document.getElementById('li')
 function cl(){document.getElementById('lb').classList.remove('open');}
 function bgc(e){if(e.target===document.getElementById('lb'))cl();}
 document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('open'))return;if(e.key==='Escape')cl();if(e.key==='ArrowRight')ns(1);if(e.key==='ArrowLeft')ns(-1);});
-function filter(q){q=q.toLowerCase().trim();let v=0;cards.forEach(({el,n,c})=>{const m=!q||n.includes(q)||c.includes(q);el.classList.toggle('hid',!m);if(m)v++;});document.getElementById('nr').style.display=(!q||v>0)?'none':'block';document.getElementById('qd').textContent=q;}
+function filter(q){
+  q=q.toLowerCase().trim();
+  let v=0;
+  const openBlocks=new Set();
+  cards.forEach(({el,n,c,block})=>{
+    const m=!q||n.includes(q)||c.includes(q);
+    el.classList.toggle('hid',!m);
+    if(m){v++;if(q)openBlocks.add(block);}
+  });
+  document.querySelectorAll('.cb').forEach(b=>{
+    const h=b.querySelector('.ch'),body=b.querySelector('.body');
+    if(q){
+      const show=openBlocks.has(b);
+      b.style.display=show?'':'none';
+      body.classList.add('open');h.classList.add('open');
+    }else{
+      b.style.display='';
+      body.classList.remove('open');h.classList.remove('open');
+    }
+  });
+  document.getElementById('nr').style.display=(!q||v>0)?'none':'block';
+  document.getElementById('qd').textContent=q;
+}
 build();
 </script>
 </body>
