@@ -13,7 +13,8 @@
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx)}
 .bar{height:5px;background:linear-gradient(90deg,#55CDFC 20%,#F7A8B8 20% 40%,#fff 40% 60%,#F7A8B8 60% 80%,#55CDFC 80%)}
 .hdr{background:var(--sf);border-bottom:1px solid var(--bd);padding:28px 20px 20px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 1px 0 var(--bd)}
-.logo{width:90px;height:90px;display:block;margin:0 auto 10px}
+.logo{width:72px;height:72px;border-radius:50%;overflow:hidden;display:block;margin:0 auto 10px}
+.logo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .hdr h1{font-size:24px;font-weight:700;margin-bottom:4px}
 .hdr p{font-size:13px;color:var(--mu)}
 .sw{max-width:420px;margin:14px auto 0;position:relative}
@@ -64,9 +65,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;border-radius:50%;width:34px;height:34px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .np{left:8px}.nn{right:8px}
 footer{text-align:center;padding:18px;font-size:12px;color:var(--mu);border-top:1px solid var(--bd);margin-top:28px}
+.watermark{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;opacity:0.30;pointer-events:none;z-index:0;user-select:none}
+.main,.hdr{position:relative;z-index:1}
 </style>
 </head>
 <body>
+<img src="logo_transparente.png" class="watermark" alt="" aria-hidden="true">
 <div class="bar"></div>
 <div class="hdr">
   <div class="logo"><img src="logo.png" alt="Vexar"></div>
