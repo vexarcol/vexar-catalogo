@@ -120,21 +120,28 @@ function tog(h){
 // Precios en COP por nombre de producto (coincidencia parcial, minúsculas)
 const PRECIOS=[
   // Packers 5 en 1 — patrones exactos del catálogo
-  {k:"allday (5 en 1)",p:280000},
-  {k:"mr.flex (5 en 1)",p:345000},{k:"mrflex (5 en 1)",p:345000},
+  {k:"allday (5 en 1) pintura",p:390000},
+  {k:"allday (5 en 1)",p:320000},
+  {k:"mr.flex (5 en 1) pintura",p:470000},{k:"mrflex (5 en 1) pintura",p:470000},
+  {k:"mr.flex (5 en 1)",p:330000},{k:"mrflex (5 en 1)",p:330000},
   {k:"mr clone (5 en 1)",p:420000},{k:"mrclone (5 en 1)",p:420000},
-  {k:"tkard (5 en 1)",p:495000},
-  {k:"trex (5 en 1)",p:470000},
-  {k:"mr. long (5 en 1)",p:495000},{k:"mr long (5 en 1)",p:495000},
-  {k:"broll (5 en 1)",p:610000},
+  {k:"tkard (5 en 1)",p:690000},
+  {k:"trex (5 en 1) pintura",p:575000},
+  {k:"trex (5 en 1)",p:450000},
+  {k:"mr. long (5 en 1)",p:595000},{k:"mr long (5 en 1)",p:595000},
+  {k:"broll (5 en 1)",p:830000},
   {k:"replic (5 en 1)",p:830000},
-  {k:"b monster (5 en 1)",p:585000},{k:"b-monster (5 en 1)",p:585000},
-  {k:"princesex (5 en 1)",p:625000},
-  {k:"kingsex (5 en 1)",p:710000},
+  {k:"b monster (5 en 1) pintura",p:680000},{k:"b-monster (5 en 1) pintura",p:680000},
+  {k:"b monster (5 en 1)",p:535000},{k:"b-monster (5 en 1)",p:535000},
+  {k:"princesex (5 en 1)",p:710000},
+  {k:"kingsex (5 en 1) pintura",p:750000},
+  {k:"kingsex (5 en 1)",p:745000},
   {k:"k magic (5 en 1)",p:765000},{k:"k-magic (5 en 1)",p:765000},
   // Packers 2 en 1 / 2 funciones
-  {k:"xmall (2 en 1)",p:320000},
-  {k:"stp (2 en 1)",p:250000},
+  {k:"xmall (2 en 1) pintura",p:260000},
+  {k:"xmall (2 en 1)",p:205000},
+  {k:"stp (2 en 1) pintura",p:260000},
+  {k:"stp (2 en 1)",p:240000},
   {k:"firerex",p:460000},
   {k:"fireroll",p:590000},
   {k:"firereplic",p:590000},
@@ -143,8 +150,9 @@ const PRECIOS=[
   {k:"peti (volumen)",p:110000},
   {k:"plufin (volumen)",p:115000},{k:"plufin",p:115000},
   // Extensores
-  {k:"growup",p:240000},
-  {k:"superup",p:295000},
+  {k:"growup (extensor) pintura",p:190000},
+  {k:"growup",p:155000},
+  {k:"superup",p:220000},
   // Binders Para tí
   {k:"faja 15cm",p:110000},
   {k:"faja 19cm",p:125000},
@@ -188,6 +196,7 @@ const PRECIOS=[
   {k:"sexball",p:130000},
   {k:"vibra-packer",p:180000},{k:"vibra packer",p:180000},
   // Vértebras Articuladas
+  {k:"volumen blackt",p:115000},
   {k:"articulada - allday",p:60000},{k:"articulada allday",p:60000},
   {k:"articulada - mr clone",p:60000},{k:"articulada mr clone",p:60000},
   {k:"articulada - mr flex",p:60000},{k:"articulada mr flex",p:60000},
@@ -222,6 +231,9 @@ const PRECIOS=[
   {k:"sexo anal",p:45000},
   {k:"algodón",p:55000},{k:"algodon",p:55000},
   {k:"preservativo",p:20000},
+  // Vértebras fallback genérico (para archivos renombrados manualmente)
+  {k:"vértebra articulada",p:60000},{k:"vertebra articulada",p:60000},
+  {k:"newz - ",p:120000},{k:"newz ",p:120000},
 ];
 
 function getPrice(name){
