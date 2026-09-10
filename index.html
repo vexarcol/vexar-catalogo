@@ -119,44 +119,75 @@ function tog(h){
 
 // Precios en COP por nombre de producto (coincidencia parcial, minúsculas)
 const PRECIOS=[
-  // Packers 5 en 1
-  {k:"allday 10cm",p:280000},{k:"mrflex 12cm",p:345000},{k:"mflex 12cm",p:345000},
-  {k:"mrflex 12cm (con pintura)",p:380000},{k:"mrclone 11cm",p:420000},{k:"mr clone 11cm",p:420000},
-  {k:"trex 13cm",p:470000},{k:"mr long 14",p:495000},{k:"broll 14cm",p:610000},
-  {k:"replic 14cm",p:830000},{k:"b-monster 16cm",p:585000},{k:"bmonster 16cm",p:585000},
-  {k:"princesex 15cm",p:625000},{k:"kingsex 18",p:710000},{k:"k-magic 14cm",p:765000},
-  // Packers 2 en 1
-  {k:"xmall 8cm",p:320000},{k:"stp 7,5cm",p:250000},{k:"stp 7.5cm",p:250000},
-  {k:"firerex 13cm",p:460000},{k:"fireroll 14cm",p:590000},{k:"firereplic 14cm",p:590000},
+  // Packers 5 en 1 — patrones exactos del catálogo
+  {k:"allday (5 en 1)",p:280000},
+  {k:"mr.flex (5 en 1)",p:345000},{k:"mrflex (5 en 1)",p:345000},
+  {k:"mr clone (5 en 1)",p:420000},{k:"mrclone (5 en 1)",p:420000},
+  {k:"tkard (5 en 1)",p:495000},
+  {k:"trex (5 en 1)",p:470000},
+  {k:"mr. long (5 en 1)",p:495000},{k:"mr long (5 en 1)",p:495000},
+  {k:"broll (5 en 1)",p:610000},
+  {k:"replic (5 en 1)",p:830000},
+  {k:"b monster (5 en 1)",p:585000},{k:"b-monster (5 en 1)",p:585000},
+  {k:"princesex (5 en 1)",p:625000},
+  {k:"kingsex (5 en 1)",p:710000},
+  {k:"k magic (5 en 1)",p:765000},{k:"k-magic (5 en 1)",p:765000},
+  // Packers 2 en 1 / 2 funciones
+  {k:"xmall (2 en 1)",p:320000},
+  {k:"stp (2 en 1)",p:250000},
+  {k:"firerex",p:460000},
+  {k:"fireroll",p:590000},
+  {k:"firereplic",p:590000},
   // Volumen
-  {k:"popt 7",p:95000},{k:"peti 6",p:110000},{k:"plufin",p:115000},
+  {k:"popt",p:95000},
+  {k:"peti (volumen)",p:110000},
+  {k:"plufin (volumen)",p:115000},{k:"plufin",p:115000},
   // Extensores
-  {k:"growup 7cm",p:240000},{k:"superup 12cm",p:295000},
-  // Binders
-  {k:"faja 15cm",p:110000},{k:"faja 19cm",p:125000},{k:"faja 23cm",p:125000},
-  {k:"top con correa 19cm",p:158000},{k:"top chaleco 16cm",p:158000},
+  {k:"growup",p:240000},
+  {k:"superup",p:295000},
+  // Binders Para tí
+  {k:"faja 15cm",p:110000},
+  {k:"faja 19cm",p:125000},
+  {k:"faja 23cm",p:125000},
+  // Binder Top
+  {k:"binder top con correa",p:158000},
+  {k:"binder top chaleco",p:158000},
+  {k:"binder top 16cm",p:158000},
+  {k:"binder top 19cm",p:158000},
+  {k:"binder top 23cm",p:158000},
   // Tape
-  {k:"tape binder 10cm",p:105000},{k:"tape binder 5cm",p:85000},{k:"tape lgbt",p:85000},
+  {k:"tape binder 10cm",p:105000},
+  {k:"tape binder 5cm",p:85000},
+  {k:"tape lgbt",p:85000},
   // Cintas
-  {k:"cinta básica",p:90000},{k:"cinta nicet",p:95000},{k:"cinta reforzada",p:95000},
-  {k:"cinta boxer",p:110000},{k:"cinta strap",p:105000},
+  {k:"cinta básica",p:90000},
+  {k:"cinta nicet",p:95000},
+  {k:"cinta reforzada",p:95000},
+  {k:"cinta boxer",p:110000},
+  {k:"cinta strap",p:105000},
   // Arnés
-  {k:"arnes nicet",p:70000},{k:"arnes básica",p:80000},{k:"arnes reforzada",p:80000},
-  {k:"arnes strap",p:80000},{k:"arnes boxer",p:100000},
+  {k:"arnes nicet",p:70000},
+  {k:"arnes reforzada",p:80000},
+  {k:"arnes básica",p:80000},
+  {k:"arnes strap",p:80000},
+  {k:"arnes boxer",p:100000},
   // Bóxer
-  {k:"bóxer para packer",p:75000},{k:"boxer para packer",p:75000},
   {k:"bóxer absorbente",p:135000},{k:"boxer absorbente",p:135000},
   {k:"bóxer con volumen",p:130000},{k:"boxer con volumen",p:130000},
-  {k:"traje de baño",p:130000},{k:"sunga",p:130000},
+  {k:"traje de baño",p:130000},
+  {k:"bóxer para packer",p:75000},{k:"boxer para packer",p:75000},
   {k:"bóxer transt",p:75000},{k:"boxer transt",p:75000},
   {k:"bóxer microfibra",p:75000},{k:"boxer microfibra",p:75000},
-  {k:"slip abertura",p:75000},{k:"boxer abertura",p:75000},
+  {k:"slip abertura",p:75000},
+  {k:"bóxer absorvente",p:135000},
   // Accesorios
-  {k:"estojo",p:50000},{k:"estable para packer",p:50000},
+  {k:"estojo",p:50000},
+  {k:"estable para packer",p:50000},
   {k:"bolsaking",p:60000},{k:"bolsa king",p:60000},
-  {k:"pump",p:90000},{k:"sexball",p:130000},
-  {k:"vibra-packer",p:180000},{k:"vibrapacker",p:180000},
-  // Vértebras
+  {k:"pump",p:90000},
+  {k:"sexball",p:130000},
+  {k:"vibra-packer",p:180000},{k:"vibra packer",p:180000},
+  // Vértebras Articuladas
   {k:"articulada - allday",p:60000},{k:"articulada allday",p:60000},
   {k:"articulada - mr clone",p:60000},{k:"articulada mr clone",p:60000},
   {k:"articulada - mr flex",p:60000},{k:"articulada mr flex",p:60000},
@@ -164,6 +195,7 @@ const PRECIOS=[
   {k:"articulada - tkard",p:60000},{k:"articulada tkard",p:60000},
   {k:"articulada - mr long",p:60000},{k:"articulada mr long",p:60000},
   {k:"articulada - bmonster",p:60000},{k:"articulada bmonster",p:60000},
+  // Vértebras NewZ
   {k:"newz - allday",p:100000},{k:"newz allday",p:100000},
   {k:"newz - mr clone",p:125000},{k:"newz mr clone",p:125000},
   {k:"newz - mr flex",p:125000},{k:"newz mr flex",p:125000},
@@ -176,13 +208,20 @@ const PRECIOS=[
   {k:"newz - broll",p:148000},{k:"newz broll",p:148000},
   {k:"newz - kings",p:148000},{k:"newz kings",p:148000},
   // Cosméticos
-  {k:"shampoo",p:115000},{k:"tónico",p:115000},{k:"tonico",p:115000},
-  {k:"higienizador",p:50000},{k:"talco",p:45000},
-  {k:"lubricante neutro",p:45000},{k:"lubricante íntimo",p:55000},
-  {k:"lubricante a prueba",p:45000},{k:"semen artificial",p:90000},
-  {k:"gel 50 tons",p:55000},{k:"caliente y frío",p:55000},
-  {k:"toallitas",p:45000},{k:"sexo anal",p:45000},
-  {k:"algodón",p:55000},{k:"preservativo",p:20000},
+  {k:"shampoo",p:115000},
+  {k:"tónico",p:115000},{k:"tonico",p:115000},
+  {k:"higienizador",p:50000},
+  {k:"talco",p:45000},
+  {k:"lubricante neutro",p:45000},
+  {k:"lubricante íntimo",p:55000},{k:"lubricante intimo",p:55000},
+  {k:"lubricante a prueba",p:45000},
+  {k:"semen artificial",p:90000},
+  {k:"gel 50 tons",p:55000},
+  {k:"caliente y frío",p:55000},{k:"caliente y frio",p:55000},
+  {k:"toallitas",p:45000},
+  {k:"sexo anal",p:45000},
+  {k:"algodón",p:55000},{k:"algodon",p:55000},
+  {k:"preservativo",p:20000},
 ];
 
 function getPrice(name){
